@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagina Prueba</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <style>
+    /* Estilos para el resultado de la búsqueda */
+    .resultado {
+      background-color: #212121; /* Fondo oscuro */
+      padding: 10px; /* Espacio entre el contenido y el borde */
+      border: 1px solid #33ccff; /* Borde azul claro */
+      border-radius: 10px; /* Esquinas redondeadas */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Sombra oscura */
+      color: #ffffff; /* Texto blanco */
+      font-family: Arial, sans-serif; /* Fuente sans-serif */
+      font-size: 16px; /* Tamaño de fuente */
+      text-align: center; /* Alineación de texto centrada */
+    }
+  
+    /* Efecto de glow para el texto */
+    .resultado span {
+      text-shadow: 0 0 10px #33ccff; /* Sombra azul claro */
+    }
+  </style>
+</head>
+<body class="fondo"> 
+  <div class="box1">
+    <form onsubmit="return false;">
+      <label for="lista">Usuario:</label>
+      <input type="text" id="lista" name="lista" onkeypress="if(event.keyCode == 13) mostrarInformacion()"><br><br>
+      <input type="button" value="Buscar" onclick="mostrarInformacion()">
+    </form>
+    <div class="resultado">
+      <!-- Aquí se mostrará el resultado de la búsqueda -->
+    </div>
+  </div>
+
+  <script>
+    // Objeto que contiene la información de los usuarios
+    var usuarios = {
+      "jhon": {
+        nombre: "Jhon Tirado",
+        edad: 33,
+        ciudad: "Lima",
+        pais: "Perú"
+      },
+      "jheferson": {
+        nombre: "Jheferson Cerrón",
+        edad: 28,
+        ciudad: "Lima",
+        pais: "Perú"
+      },
+      "jonatan": {
+        nombre: "Jonatana Velásquez",
+        edad: 44,
+        ciudad: "Lima",
+        pais: "Perú"
+      },
+      "gabriela": {
+        nombre: "Gabriela Otayza",
+        edad: 28,
+        ciudad: "Lima",
+        pais: "Perú"
+      },
+      "francis": {
+        nombre: "Francis Córdova",
+        edad: 18,
+        ciudad: "Lima",
+        pais: "Perú"
+      },
+      "willfredo": {
+        nombre: "Willfredo Peralta",
+        edad: 24,
+        ciudad: "Lima",
+        pais: "Perú"
+      },
+      "felipe": {
+        nombre: "Felipe García",
+        edad: 26,
+        ciudad: "Lima",
+        pais: "Perú"
+      },
+      "paulo": {
+        nombre: "Paulo López",
+        edad: 28,
+        ciudad: "Lima",
+        pais: "Perú"
+      },
+      "Viviana": {
+        nombre: "Viviana",
+        edad: 28,
+        ciudad: "Lima",
+        pais: "Perú"
+      }
+    };
+
+    function mostrarInformacion() {
+      var usuario = document.getElementById("lista").value.toLowerCase();
+
+      if (usuarios[usuario]) {
+        var informacion = "Bienvenido, " + usuarios[usuario].nombre + "!<br>";
+        informacion += "Edad: " + usuarios[usuario].edad + "<br>";
+        informacion += "Ciudad: " + usuarios[usuario].ciudad + ", " + usuarios[usuario].pais;
+        document.querySelector(".resultado").innerHTML = informacion;
+
+        // Mostrar el aviso durante 15 segundos
+        setTimeout(function() {
+          document.querySelector(".resultado").innerHTML = "";
+        }, 15000);
+      } else {
+        document.querySelector(".resultado").innerHTML = "Usuario no encontrado";
+      }
+    }
+  </script>
+</body>
+</html>
